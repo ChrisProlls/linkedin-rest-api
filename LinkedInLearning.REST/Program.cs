@@ -8,7 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddResponseCaching();
-builder.Services.AddApiVersioning();
+builder.Services.AddApiVersioning(setup => {
+    setup.AssumeDefaultVersionWhenUnspecified = true;
+});
 builder.Services.AddVersionedApiExplorer(setup =>
     {
         setup.GroupNameFormat = "'v'VVV";
